@@ -1,0 +1,3 @@
+1. returns unit
+2. raised an exception Assert_failure
+3. assert (2110 <> 3110)
