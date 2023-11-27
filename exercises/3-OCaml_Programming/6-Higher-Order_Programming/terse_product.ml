@@ -1,0 +1,1 @@
+let product_right = ListLabels.fold_right ~f:( *. ) ~init:1.

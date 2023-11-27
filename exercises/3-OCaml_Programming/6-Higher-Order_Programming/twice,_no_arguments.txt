@@ -1,0 +1,4 @@
+quad : int -> int
+fourth : int -> int
+
+Partial apply twice returns a function.

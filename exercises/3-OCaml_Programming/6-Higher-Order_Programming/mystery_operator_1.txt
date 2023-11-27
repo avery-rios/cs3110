@@ -1,0 +1,1 @@
+Apply first argument to second, change application precedence
