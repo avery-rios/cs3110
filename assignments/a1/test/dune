@@ -1,0 +1,3 @@
+(test
+ (name enigma_test)
+ (libraries enigma ounit2))
