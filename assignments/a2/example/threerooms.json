@@ -1,0 +1,82 @@
+{
+	"rooms": [{
+		"id": "room1",
+		"descriptions": [{
+			"requires": ["key"],
+			"text": "This is Room 1. There is an exit to the north and a locked door to the south.
+Maybe that key could get you through the locked door...\n\nYou should drop the white hat here."
+		},
+		{
+			"requires": [],
+			"text": "This is Room 1.  There is an exit to the north and a locked door to the south.
+\nYou should drop the white hat here."
+		}],
+		"points": 1,
+		"exits": [{
+			"direction": "north",
+			"room_id": "room2",
+			"keys": []
+		},{
+			"direction": "south",
+			"room_id": "room3",
+			"keys": ["key"]
+		}],
+		"treasure": ["white hat","red hat"]
+	}, {
+		"id": "room2",
+		"descriptions": [{
+			"requires": [],
+			"text": "This is Room 2.  There is an exit to the south.\n\nYou should drop the black hat here."
+		}],
+		"points": 10,
+		"exits": [{
+			"direction": "south",
+			"room_id": "room1",
+			"keys": []
+		}],
+		"treasure": ["black hat"]
+	},{
+		"id": "room3",
+		"descriptions": [{
+			"requires": [],
+			"text": "This is Room 3.  There is an exit to the north.\n\nYou should drop the red hat here."
+		}],
+		"points": 0,
+		"exits": [{
+			"direction": "north",
+			"room_id": "room1",
+			"keys": []
+		}],
+		"treasure": ["red hat"]
+	}],
+	"start_room": "room1",
+	"items": [{
+		"id": "black hat",
+		"description": "a black fedora",
+		"points": 100
+	}, {
+		"id": "white hat",
+		"description": "a white panama",
+		"points": 1000
+	}, {
+		"id": "red hat",
+		"description": "a red fez",
+		"points": 10000
+	}, {
+		"id": "key",
+		"description": "an ordinary key",
+		"points": 0
+	}],
+	"start_inv": ["white hat"],
+	"start_locations": [{
+		"room": "room1",
+		"item": "black hat"
+	}, {
+		"room": "room1",
+		"item": "red hat"
+	}, {
+		"room": "room2",
+		"item": "key"
+	}],
+	"win_message": "You have conquered the three rooms!"
+}

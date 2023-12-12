@@ -1,0 +1,3 @@
+(test
+ (name adventure_test)
+ (libraries adventure ounit2 yojson))

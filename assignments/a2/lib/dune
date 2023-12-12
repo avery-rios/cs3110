@@ -1,0 +1,3 @@
+(library
+ (name adventure)
+ (libraries yojson str))

@@ -1,0 +1,24 @@
+{
+  "rooms": [{
+    "id": "room1",
+    "descriptions": [{
+      "requires": [],
+      "text": "Room 1"
+    }],
+    "points": 10,
+    "exits": [],
+    "treasure": ["item1"]
+  }],
+  "start_room": "room1",
+  "items": [{
+    "id": "item1",
+    "description": "item 1",
+    "points": 100
+  }],
+  "start_inv": [],
+  "start_locations": [{
+    "room": "room1",
+    "item": "item1"
+  }],
+  "win_message": "you beat oneroom"
+}

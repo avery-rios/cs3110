@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "properties": {
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "descriptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "requires": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "text": { "type": "string" }
+              }
+            },
+            "required": [ "requires", "text" ]
+          },
+          "points": { "type": "integer" },
+          "exits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "direction": { "type": "string" },
+                "room_id": { "type": "string" },
+                "keys": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              },
+              "required": [ "direction", "room_id", "keys" ]
+            }
+          },
+          "treasure": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": [ "id", "descriptions", "points", "exits", "treasure" ]
+      },
+    },
+    "start_room": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "points": { "type": "integer" }
+        },
+        "required": [ "id", "description", "points" ]
+      }
+    },
+    "start_locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item": { "type": "string" },
+          "room": { "type": "string" }
+        },
+        "required": [ "item", "room" ]
+      }
+    },
+    "start_inv": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "win_message": { "type": "string" }
+  },
+  "required": [ "rooms", "start_room", "items", "start_inv", "start_locations", "win_message" ]
+}
