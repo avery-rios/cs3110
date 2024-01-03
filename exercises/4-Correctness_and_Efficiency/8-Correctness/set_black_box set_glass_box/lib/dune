@@ -1,0 +1,4 @@
+(library
+ (name sets)
+ (instrumentation
+  (backend bisect_ppx)))

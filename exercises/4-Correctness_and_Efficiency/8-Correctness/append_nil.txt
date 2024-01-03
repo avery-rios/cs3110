@@ -1,0 +1,22 @@
+Claim: forall lst, lst @ [] = lst.
+Proof: By induction on lst.
+
+P(l) = forall l, l @ [] = l.
+
+Base case: lst = [].
+
+  [] @ []
+= {evaluation}
+  []
+
+Inductive case: lst = h :: t.
+Show: (h :: t) @ [] = h :: t.
+IH: t @ [] = t.
+
+  Cons h t @ []
+= {evaluation}
+  h :: (t @ [])
+= {IH}
+  h :: t
+
+QED

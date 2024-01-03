@@ -1,0 +1,39 @@
+let rec rev = function
+  | [] -> []
+  | h :: t -> rev t @ [h]
+
+Claim: forall lst1 lst2, rev (lst1 @ lst2) = rev lst2 @ rev lst1.
+Proof: By induction on lst1.
+
+P(l) = forall lst2, rev (l @ lst2) = rev lst2 @ rev l.
+
+Base case: lst1 = [].
+Show: P([]).
+
+  rev ([] @ lst2)
+= {evaluation}
+  rev lst2
+
+  rev lst2 @ rev []
+= {evaluation}
+  rev lst2 @ []
+= {append_nil}
+  rev lst2
+
+Inductive case: lst1 = h :: t.
+Show: P(h :: t).
+IH: P(t).
+
+  rev ((h :: t) @ lst2)
+= {evaluation}
+  rev (t @ lst2) @ [h]
+= {IH}
+  (rev lst2 @ rev t) @ [h]
+= {assoc}
+  rev lst2 @ rev t @ [h]
+
+  rev lst2 @ rev (h :: t)
+= {evaluation}
+  rev lst2 @ rev t @ [h]
+
+QED

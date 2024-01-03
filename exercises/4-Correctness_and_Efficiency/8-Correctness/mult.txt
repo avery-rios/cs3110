@@ -1,0 +1,30 @@
+let rec mult a b =
+  match a with
+  | Z -> Z
+  | S k -> plus b (mult k b)
+
+Claim: forall n, mult n Z = Z.
+Proof: By induction on n.
+
+P(n) = forall n, mult n Z = Z.
+
+Base case: n = Z.
+Show: mult Z Z = Z.
+
+  mult Z Z
+= {evaluation}
+  Z
+
+Inductive case: n = S k.
+Show: mult (S k) Z = Z.
+IH: mult k Z = Z.
+
+  mult (S k) Z
+= {evaluation}
+  Z + mult k Z
+= {IH}
+  Z + Z
+= {evaluation}
+  Z
+
+QED

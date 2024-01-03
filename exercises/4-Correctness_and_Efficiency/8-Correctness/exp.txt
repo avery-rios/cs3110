@@ -1,0 +1,40 @@
+let rec exp x n =
+  if n = 0 then 1 else x * exp x (n - 1)
+
+Claim: `exp x (m + n) = exp x m * exp x n`
+
+Proof: By induction on m.
+P(m) = exp x (m + n) = exp x m * exp x n
+
+Base case: m = 0.
+Show: exp x (0 + n) = exp x 0 * exp x n
+
+  exp x (0 + n)
+= {evaluation}
+  exp x n
+
+  exp x 0 * exp x n
+= {evaluation}
+  1 * exp x n
+= {algebra}
+  exp x n
+
+Inductive case: m = k + 1.
+IH: exp x (k + n) = exp x k * exp x n
+Show: exp x (k + 1 + n) = exp x (k + 1) * exp x n
+
+  exp x (k + 1 + n)
+= {algebra}
+  exp x (1 + k + n)
+= {evaluation}
+  x * exp x (k + n)
+= {IH}
+  x * exp x k * exp x n
+
+  exp x (k + 1) * exp x n
+= {algebra}
+  exp x (1 + k) * exp x n
+= {evaluation}
+  x * exp x k * exp x n
+
+Qed.

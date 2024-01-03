@@ -1,0 +1,27 @@
+Claim: forall lst, rev (rev lst) = lst.
+Proof: By induction on lst.
+
+P(l) = rev (rev l) = l.
+
+Base case: l = [].
+Show: P([]).
+
+  rev (rev [])
+= {evaluation}
+  []
+
+Inductive case: l = h :: t.
+Show: P(h :: t).
+IH: P(t).
+
+  rev (rev (h :: t))
+= {evaluation}
+  rev (rev t @ [h])
+= {list_dist_append}
+  rev [h] @ rev (rev t)
+= {IH}
+  rev [h] @ t
+= {evaluation}
+  h :: t
+
+QED

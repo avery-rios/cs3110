@@ -1,0 +1,3 @@
+(test
+ (name black_box)
+ (libraries sets ounit2))

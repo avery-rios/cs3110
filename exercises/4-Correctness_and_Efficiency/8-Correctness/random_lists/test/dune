@@ -1,0 +1,3 @@
+(test
+ (name random_lists)
+ (libraries lib qcheck))
