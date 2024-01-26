@@ -1,0 +1,3 @@
+(library
+ (name promise_and_resolve_lwt)
+ (libraries lwt lwt.unix))

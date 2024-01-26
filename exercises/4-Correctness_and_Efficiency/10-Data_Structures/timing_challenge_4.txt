@@ -1,0 +1,6 @@
+1 seconds later prints "1"
+9 seconds later prints "2"
+10 seconds later prints "3"
+prints "done"
+
+Takes about 20 seconds

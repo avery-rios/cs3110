@@ -1,0 +1,9 @@
+insert: expected O(1)
+  When no rehash is required, takes O(c) where c is the number of elements
+  in a bucket, worse than original.
+  When rehash is required, worse case O(n), worse than original.
+find: expected O(1), better then original
+remove: expected O(1).
+  When no rehash is required, a little better than original.
+  When a rehash is required, worst case O(n), but every insert takes O(c) 
+  where c is number of elements in a bucket, worse than original.

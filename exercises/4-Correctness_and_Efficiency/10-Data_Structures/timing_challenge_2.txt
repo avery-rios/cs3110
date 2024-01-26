@@ -1,0 +1,6 @@
+First print "all done"
+1 seconds later print "1"
+9 seconds later print "2"
+10 seconds later print "3"
+
+Takes about 20 seconds

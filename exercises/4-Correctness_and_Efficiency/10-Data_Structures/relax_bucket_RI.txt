@@ -1,0 +1,3 @@
+insert: amortized O(1)
+find: expected O(1) the same as before
+remove: expected O(1)
