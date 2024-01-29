@@ -1,0 +1,18 @@
+#install_printer Search.Engine.ListEngine.format;;
+#install_printer Search.Engine.TreeEngine.format;;
+
+module KV = struct
+  type t = int
+
+  (** in reverse order *)
+  let compare a b =
+    let c = Int.compare a b in
+    if c > 0 then `LT else if c < 0 then `GT else `EQ
+
+  let format = Format.pp_print_int
+end;;
+
+module TestDict = Search.Data.MakeTreeDictionary(KV)(KV);;
+#install_printer TestDict.format;;
+
+let insert_list ls d = List.fold_left (fun acc i -> TestDict.insert i 0 acc) d ls;;

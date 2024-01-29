@@ -1,0 +1,1 @@
+Red black tree is used instead of AVL tree.
