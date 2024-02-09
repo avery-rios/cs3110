@@ -1,0 +1,10 @@
+  Left (1+2)
+--> (step + operation)
+  Left 3
+
+  match Left 42 with Left x -> x+1 | Right y -> y-1
+--> (step match expr)
+  (x + 1){42 / x}
+= 42 + 1
+--> (step + operation)
+  43

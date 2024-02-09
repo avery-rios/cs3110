@@ -1,0 +1,27 @@
+(* This rule should implement evaluation of e. *)
+match e with | p1 -> e1 | p2 -> e2 | ... | pn -> en
+  --> match e' with | p1 -> e1 | p2 -> e2 | ... | pn -> en
+  if e --> e'
+
+(* This rule implements moving past p1 to the next pattern. *)
+match v with | p1 -> e1 | p2 -> e2 | ... | pn -> en
+  --> match v with | p2 -> e2 | ... | pn -> en
+  if there does not exist an s such that v ~= p1 // s
+
+(* This rule implements matching v with p1 then proceeding to evaluate e1. *)
+match v with | p1 -> e1 | p2 -> e2 | ... | pn -> en
+  --> e1 s
+  if v ~= p1 // s
+
+  match (1 + 2, 3) with | (1,0) -> 4 | (1,x) -> x | (x,y) -> x + y
+--> (step + operation)
+  match (3, 3) with | (1,0) -> 4 | (1,x) -> x |  (x,y) -> x + y
+--> (step match)
+  match (3, 3) with | (1, x) -> x | (x,y) -> x + y
+--> (step match)
+  match (3, 3) with | (x,y) -> x + y
+--> (step match)
+  (x + y) // {3 / x}{3 / y}
+= 3 + 3
+--> (step + operation)
+  6

@@ -1,0 +1,4 @@
+(fun l -> match l with
+  Left v -> 0
+  | Right x -> 1
+  )

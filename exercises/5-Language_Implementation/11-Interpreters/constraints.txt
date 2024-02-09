@@ -1,0 +1,7 @@
+I |- fun x -> ( + ) 1 x : t0 -> t2 -| {int -> int -> int = int -> t1, t1 = t0 -> t2}
+  I, x: t0 |- ( + ) 1 x : t2 -| {int -> int -> int = int -> t1, t1 = t0 -> t2}
+    I, x: t0 |- ( + ) 1 : t1 -| {int -> int -> int = int -> t1}
+      I, x: t0 |- ( + ) : int -> int -> int -| {}
+      I, x: t0 |- 1 : int -| {}
+    I, x: t0 |- x : t0 -| {}
+

@@ -1,0 +1,18 @@
+<{}, (fun x -> x+1) 2> ==> 3 (application)
+  <{}, fun x -> x+1> ==> (| fun x -> x+1, {}|) (fun)
+  <{}, 2> ==> 2 (const)
+  <{x: 2}, x + 1> ==> 3 (op: plus)
+    <{x: 2}, x> ==> 2 (var)
+    <{x: 2}, 1> ==> 1 (const)
+    2 + 1 = 3
+
+<{}, let f = fun x -> x+1 in f 2> ==> (let)
+  <{}, fun x -> x+1> ==> (| fun x -> x+1, {} |) (fun)
+  <{f: (| fun x -> x+1, {} |)}, f 2> ==> 3 (application)
+    <{f: (| fun x -> x+1, {} |)}, f> ==> (| fun x -> x+1, {} |) (var)
+    <{f: (| fun x -> x+1, {} |)}, 2> ==> 2 (const)
+    <{x: 2}, x + 1> ==> 3 (op: plus)
+      <{x: 2}, x> ==> 2 (var)
+      <{x: 2}, 1> ==> 1 (const)
+      2 + 1 = 3
+

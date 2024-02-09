@@ -1,0 +1,70 @@
+  (fun x -> 3 + x) 2
+--> (step application)
+  (3 + x){2 / x}
+= 3 + 2
+--> (step + operation)
+  5
+
+  let f = (fun x -> x + x) in (f 3) + (f 3)
+--> (step let)
+  ((f 3) + (f 3)){(fun x -> x + x) / f}
+= ((fun x -> x + x) 3) + ((fun x -> x + x) 3)
+--> (step application)
+  ((x + x){3 / x}) + ((fun x -> x + x) 3)
+= (3 + 3) + ((fun x -> x + x) 3)
+--> (step + operation)
+  6 + ((fun x -> x + x) 3)
+--> (step application)
+  6 + ((x + x){3 / x})
+= 6 + (3 + 3)
+--> (step + operation)
+  6 + 6
+--> (step + operation)
+  12
+
+  let f = fun x -> x + x in let x = 1 in let g = fun y -> x + f y in g 3
+--> (step let)
+  (let x = 1 in let g = fun y -> x + f y in g 3){(fun x -> x + x) / f}
+= let x = 1 in let g = fun y -> x + (fun x -> x + x) y in g 3
+--> (step let)
+  (let g = fun y -> x + (fun x -> x + x) y in g 3){1 / x}
+= let g = fun y -> 1 + (fun x -> x + x) y in g 3
+--> (step let)
+  (g 3){(fun y -> 1 + (fun x -> x + x) y) / g}
+= (fun y -> 1 + (fun x -> x + x) y) 3
+--> (step application)
+  (1 + (fun x -> x + x) y){3 / y}
+= 1 + (fun x -> x + x) 3
+--> (step application)
+  1 + ((x + x){3 / x})
+= 1 + (3 + 3)
+--> (step + operation)
+  1 + 6
+--> (step + operation)
+  7
+
+  let f = (fun x -> fun y -> x + y) in let g = f 3 in (g 1) + (f 2 3)
+--> (step let)
+  (let g = f 3 in (g 1) + (f 2 3)){(fun x -> fun y -> x + y) / f}
+= let g = (fun x -> fun y -> x + y) 3 in (g 1) + ((fun x -> fun y -> x + y) 2 3)
+--> (step application)
+  let g = ((fun y -> x + y){3 / x}) in (g 1) + ((fun x -> fun y -> x + y) 2 3)
+= let g = (fun y -> 3 + y) in (g 1) + ((fun x -> fun y -> x + y) 2 3)
+--> (step let)
+  ((g 1) + ((fun x -> fun y -> x + y) 2 3)){(fun y -> 3 + y) / g}
+= (fun y -> 3 + y) 1 + ((fun x -> fun y -> x + y) 2 3)
+--> (step application)
+  (3 + y){1 / y} + ((fun x -> fun y -> x + y) 2 3)
+= (3 + 1) + ((fun x -> fun y -> x + y) 2 3)
+--> (step + operation)
+  4 + ((fun x -> fun y -> x + y) 2 3)
+--> (step application)
+  4 + (((fun y -> x + y) 2){3 / x})
+= 4 + ((fun y -> 3 + y) 2)
+--> (step application)
+  4 + ((3 + y){2 / y})
+= 4 + (3 + 2)
+--> (step + operation)
+  4 + 5
+--> (step + operation)
+  9

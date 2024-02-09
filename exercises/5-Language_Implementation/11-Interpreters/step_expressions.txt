@@ -1,0 +1,15 @@
+  (3 + 5) * 2
+--> (step + operation)
+  8 * 2
+--> (stop * operation)
+  16
+
+  if 2 + 3 <= 4 then 1 + 1 else 2 + 2
+--> (step + operation)
+  if 5 <= 4 then 1 + 1 else 2 + 2
+--> (step <= operation)
+  if false then 1 + 1 else 2 + 2
+--> (step if)
+  2 + 2
+--> (step + operation)
+  4

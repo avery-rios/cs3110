@@ -1,0 +1,48 @@
+<{}, let x = 2 + 2 in x + x> (let)
+  <{}, 2 + 2> ==> 4 (op: plus)
+    <{}, 2> ==> 2 (const)
+    <{}, 2> ==> 2 (const)
+    2 + 2 = 4
+  <{x: 4}, x + x> ==> 8 (op: plus)
+    <{x: 4}, x> ==> 4 (var)
+    <{x: 4}, x> ==> 4 (var)
+    4 + 4 = 8
+
+<{}, let x = 1 in let x = x + x in x + x> ==> 4 (let)
+  <{}, 1> ==> 1 (const)
+  <{x: 1}, let x = x + x in x + x> ==> 4 (let)
+    <{x: 1}, x + x> ==> 2 (op: plus)
+      <{x: 1}, x> ==> 1 (var)
+      <{x: 1}, x> ==> 1 (var)
+      1 + 1 = 2
+    <{x: 2}, x + x> ==> 4 (op: plus)
+      <{x: 2}, x> ==> 2 (var)
+      <{x: 2}, x> ==> 2 (var)
+      2 + 2 = 4
+
+<{}, let f = fun x -> fun y -> x + y in let g = f 3 in g 2> ==> 5 (let)
+  <{}, fun x -> fun y -> x + y> ==> (| fun x -> fun y -> x + y, {} |) (fun)
+  <{f: (| fun x -> fun y -> x + y, {} |)}, let g = f 3 in g 2> ==> 5 (let)
+    <{f: (| fun x -> fun y -> x + y, {} |)}, f 3> ==> (| fun y -> x + y, {x: 3} |) (app)
+      <{f: (| fun x -> fun y -> x + y, {} |)}, f> ==> (| fun x -> fun y -> x + y, {} |) (var)
+      <{f: (| fun x -> fun y -> x + y, {} |)}, 3> ==> 3 (const)
+      <{x: 3}, fun y -> x + y> ==> (| fun y -> x + y, {x: 3} |) (fun)
+    <{f: (| fun x -> fun y -> x + y, {} |), g: (| fun y -> x + y, {x: 3} |)}, g 2> ==> 5 (app)
+      <{f: (| fun x -> fun y -> x + y, {} |), g: (| fun y -> x + y, {x: 3} |)}, g> ==> (| fun y -> x + y, {x: 3} |) (var)
+      <{f: (| fun x -> fun y -> x + y, {} |), g: (| fun y -> x + y, {x: 3} |)}, 2> ==> 2 (const)
+      <{x: 3, y: 2}, x + y> ==> 5 (op: plus)
+        <{x: 3, y: 2}, x> ==> 3 (var)
+        <{x: 3, y: 2}, y> ==> 2 (var)
+        3 + 2 = 5
+
+<{}, let f = fst ((let x = 3 in fun y -> x), 2) in f 0> ==> 3 (let)
+  <{}, fst ((let x = 3 in fun y -> x), 2)> ==> (| fun y -> x, {x: 3} |) (fst)
+    <{}, ((let x = 3 in fun y -> x), 2)> ==> ((| fun y -> x, {x: 3} |), 2) (pair)
+      <{}, let x = 3 in fun y -> x> ==> (| fun y -> x, {x: 3} |) (let)
+        <{}, 3> ==> 3 (const)
+        <{x: 3}, fun y -> x> ==> (| fun y -> x, {x: 3} |) (fun)
+      <{}, 2> ==> 2 (const)
+  <{f: (| fun y -> x, {x: 3} |)}, f 0> ==> 3 (app)
+    <{f: (| fun y -> x, {x: 3} |)}, f> ==> (| fun y -> x, {x: 3} |) (var)
+    <{f: (| fun y -> x, {x: 3} |)}, 0> ==> 0 (const)
+    <{x: 3, y: 0}, x> ==> 3 (var)

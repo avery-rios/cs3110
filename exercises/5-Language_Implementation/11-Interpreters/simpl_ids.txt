@@ -1,0 +1,1 @@
+No digit or underscore is allowed in simpl ids

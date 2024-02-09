@@ -1,0 +1,8 @@
+{} |- let x = 0 in if x <= 1 then 22 else 42 : int
+  {} |- 0 : int
+  {x:int} |- if x <= 1 then 22 else 42 : int
+    {x:int} |- x <= 1 : bool
+      {x:int} |- x : int
+      {x:int} |- 1 : int
+    {x:int} |- 22 : int
+    {x:int} |- 42 : int
