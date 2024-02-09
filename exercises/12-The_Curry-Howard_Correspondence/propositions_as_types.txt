@@ -1,0 +1,8 @@
+true->p
+  unit -> 'p
+p /\ (q /\ r)
+  'p * ('q * 'r)
+(p \/ q) \/ r
+  (('p, 'q) disj, 'r) disj
+false -> p
+  empty -> 'p
