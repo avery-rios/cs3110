@@ -1,0 +1,8 @@
+(library
+ (name jocalf))
+
+(ocamllex
+ (modules lexer))
+
+(menhir
+ (modules parser))

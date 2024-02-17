@@ -1,0 +1,3 @@
+(executable
+ (name repl)
+ (libraries jocalf str lwt react lambda-term))
